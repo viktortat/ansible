@@ -1,0 +1,11 @@
+- hosts: all
+
+  tasks:
+
+    - name: Update apt-cache
+      apt: update_cache=yes
+
+    - name: install supervisor
+      apt: "pkg={{ item }} state=latest"
+      with_items:
+        - supervisor

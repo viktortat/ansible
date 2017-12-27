@@ -1,0 +1,140 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Настройка ssh &#8212; Документация ansible script start </title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/translations.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="genindex.html" />
+    <link rel="search" title="Поиск" href="search.html" />
+    <link rel="next" title="Папка user" href="first_page.html" />
+    <link rel="prev" title="Список команд для управления скриптом" href="index.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="ssh">
+<h1>Настройка ssh<a class="headerlink" href="#ssh" title="Ссылка на этот заголовок">¶</a></h1>
+<div class="section" id="id1">
+<h2>Настройка ssh по ключу<a class="headerlink" href="#id1" title="Ссылка на этот заголовок">¶</a></h2>
+<ol class="arabic">
+<li><p class="first">Для настройки выполните команды:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ssh</span><span class="o">-</span><span class="n">copy</span><span class="o">-</span><span class="nb">id</span> <span class="o">-</span><span class="n">i</span> <span class="o">~/.</span><span class="n">ssh</span><span class="o">/</span><span class="n">id_rsa</span><span class="o">.</span><span class="n">pub</span> <span class="n">user</span><span class="nd">@server</span>
+
+<span class="n">ssh</span> <span class="o">-</span><span class="n">i</span> <span class="o">~/.</span><span class="n">ssh</span><span class="o">/</span><span class="n">id_rsa</span><span class="o">.</span><span class="n">pub</span> <span class="n">user</span><span class="nd">@server</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<div class="admonition note">
+<p class="first admonition-title">Примечание</p>
+<p>Когда ssh работает на нестандартном порту:</p>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="n">ssh</span><span class="o">-</span><span class="n">copy</span><span class="o">-</span><span class="nb">id</span> <span class="o">-</span><span class="n">i</span> <span class="o">~/.</span><span class="n">ssh</span><span class="o">/</span><span class="n">id_rsa</span><span class="o">.</span><span class="n">pub</span> <span class="s2">&quot;-p port user@server&quot;</span>
+</pre></div>
+</div>
+</div>
+<ol class="arabic" start="2">
+<li><p class="first">Проверить доступность сервера выполните команду:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ansible</span> <span class="o">-</span><span class="n">m</span> <span class="n">ping</span> <span class="nb">all</span> <span class="o">-</span><span class="n">vvv</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<div class="admonition note">
+<p class="first admonition-title">Примечание</p>
+<p>Расширенный вывод работы ансибл:</p>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="n">ключ</span> <span class="o">-</span><span class="n">vvv</span> <span class="n">позволяет</span> <span class="n">смотреть</span> <span class="n">вывод</span> <span class="n">ошибок</span>
+<span class="n">Если</span> <span class="n">не</span> <span class="n">установлен</span> <span class="n">python</span> <span class="n">на</span> <span class="n">удаленной</span> <span class="n">машине</span><span class="p">,</span> <span class="n">ансибл</span> <span class="n">работать</span> <span class="n">не</span> <span class="n">будет</span><span class="o">.</span>
+<span class="n">Или</span> <span class="n">же</span> <span class="n">нужно</span> <span class="n">использовать</span> <span class="n">модуль</span> <span class="n">raw</span> <span class="n">для</span> <span class="n">установки</span><span class="o">.</span>
+</pre></div>
+</div>
+</div>
+<ol class="arabic" start="3">
+<li><p class="first">Для установки python выполните команду:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">python</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<div class="admonition note">
+<p class="first admonition-title">Примечание</p>
+<p>Просмотреть текущую версию python:</p>
+<blockquote class="last">
+<div>python -V</div></blockquote>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="index.html" title="предыдущая глава">Список команд для управления скриптом</a></li>
+      <li>Next: <a href="first_page.html" title="следующая глава">Папка user</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Быстрый поиск</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Искать" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017, Alex Sukhrin.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="_sources/ssh.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

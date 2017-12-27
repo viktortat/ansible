@@ -1,0 +1,23 @@
+- hosts: all
+#  vars:
+
+  tasks:
+    - name: Update apt-cache
+      apt: update_cache=yes
+#    - name: создание нужной нам директории
+#      command: mkdr /home/john/proxybase
+
+#    - name: перенос репозитория в нужную нам папку
+#      command: cp /home/john/proxybase /home/john/.v3
+
+#    - name: удаление не нужной папки
+#      command: rm -r /home/john/proxybase
+# - name: create virtualenv
+#  pip: virtualenv={{ env }} virtualenv_site_packages=yes {% if requirements %}requirements={{ project_homedir }}/{{ requirements }}{% endif %}
+    - name: create virtualenv
+      pip:
+        virtualenv_python: /usr/local/bin/python3.5
+        state: latest
+        requirements: /home/jon/proxyproject/req.txt
+        virtualenv: /home/jon/.venv
+        virtualenv_site_packages: yes

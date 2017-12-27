@@ -1,0 +1,85 @@
+- hosts: all
+  tasks:
+
+    - name: greate user
+      - user:
+          name: adv
+          groups: sudo
+          
+
+#    - name: install python3 packages
+#      apt: "pkg={{ item }} state=latest"
+#      with_items:
+#        - python3
+#        - python3-venv
+#        - python3-dev
+#        - build-essential
+#        - python-pip
+#        - python-setuptools
+#      tags:
+#        - python3
+#
+#    - name: Get aptitude for upgrade
+#      apt: pkg=aptitude state=present
+#
+#    - name: Install global python requirements
+#      pip: name={{item}} state=present
+#     with_items:
+#        - pandas
+#        - scipy
+#        - shapely
+#        - django
+#        - pyshp
+#        - geopy
+#        - pyproj
+#        - ipython
+#        - ipdb
+#        - scikit-learn
+#        - pyzmq
+#        - tornado
+#        - pygments
+#        - sphinx
+#        - patsy
+#        - statsmodels
+#        - ggplot
+#        - fabric
+
+#    - name: Ensure the HTTPd package is installed
+#      yum:
+#        name: httpd
+#        state: present
+#      become: True
+
+#    - name: GIT is installed
+#      yum:
+#        name: '{{ item }}'
+#        state: present
+#      become: True
+#      with_items:
+#      - git
+
+#    - name: Installs packages
+#      apt: pkg={{ item }} state=present update_cache=yes cache_valid_time=604800
+#      with_items:
+#        - git
+
+#    - name: Ensure the HTTPd service is enabled and running
+#      service:
+#        name: httpd
+#        state: started
+#        enabled: True
+#      become: True
+
+#    - name:  folder is present
+#      file:
+#        name: /home/john
+#        state: directory
+#        group: john
+#        owner: john
+#        mode: 0755
+#
+#
+#    - name: Install or update website
+#      git:
+#        repo: https://github.com/alexsukhrin/ansible-w.git
+#        dest: /home/john

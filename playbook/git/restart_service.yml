@@ -1,0 +1,12 @@
+- hosts: all
+
+  tasks:
+
+    - name: Update git
+      shell: cd /home/...
+
+    - name: restart nginx
+      command: service nginx restart
+
+    - name: restart gb24-gunicorn
+      command: service gb24 restart

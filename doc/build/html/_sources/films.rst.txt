@@ -1,0 +1,15 @@
+*******************************************
+CHAPTER 2 Модуль films из проекта на Django
+*******************************************
+
+Модель
+======
+
+.. automodule:: films.models
+    :members:
+
+Вид
+======
+
+.. automodule:: films.views
+    :members:

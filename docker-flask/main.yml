@@ -1,0 +1,9 @@
+- host: localhost
+  connection: local
+
+  task:
+    - name: Buil docker image from Dockerfiles.
+      docker_image:
+        name: test1
+        path: test
+        state: build

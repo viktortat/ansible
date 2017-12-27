@@ -1,0 +1,23 @@
+---
+- name: Build docker images from Dockerfiles.
+  docker_image:
+    name: "{{ item.name }}"
+    tag: "{{ item.tag }}"
+    path: "/vagrant/provisioning/{{ item.directory }}"
+    state: build
+  with_items:
+    - { name: data, tag: "data", directory: data }
+    - { name: db, tag: "mysql", directory: db }
+# Data containers don't need to be running to be utilized.
+- name: Run data container.
+  docker:
+    image: data:data
+    name: data
+    state: present
+- name: Run a mysql container.
+  docker:
+    image: db
+    state: running
+    volumes_from: data
+    command: /opt/start-mysql.sh
+    ports: "3306:3306"

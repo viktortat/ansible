@@ -1,0 +1,5 @@
+- hosts: all
+  tasks:
+
+    - name: clone git repository
+      git: dest=/home/john/proxyproject repo=https://DJWOMS:Djwoms25@gitlab.com/DJWOMS/proxy-dev.git

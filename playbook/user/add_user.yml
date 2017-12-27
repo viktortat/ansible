@@ -1,0 +1,25 @@
+- hosts: all
+  remote_user: root
+  vars:
+      # created with:
+      # python -c 'import crypt; print crypt.crypt("This is my Password", "1111")'
+    password: pass
+    uusername: jon
+
+  tasks:
+#    - name: create groups sudo, john
+#      command: groupadd '{{ uusername }}'
+    # Walk through account creation, modification, and deletion
+    - name: test basic user account creation
+      user:
+        name: '{{uusername}}'
+        comment: TsetUser
+        group: sudo
+        shell: /bin/bash
+        createhome: yes
+        state: present
+#        generate_ssh_key: yes
+#        ssh_key_bits: 2048
+
+    - name: Set password to user
+      shell: echo {{uusername}}:{{password}} | chpasswd

@@ -1,0 +1,6 @@
+.vagrant/
+*.log
+env/
+venv/
+.idea/
+logs/ansible.log

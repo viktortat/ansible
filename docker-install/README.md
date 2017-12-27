@@ -1,0 +1,1 @@
+1. After install docker need run command "sudo usermod -a -G docker $USER" and reboot server.

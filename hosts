@@ -1,0 +1,9 @@
+#[web-docker]
+#192.168.43.21 sible_user=vagrant ansible_private_key_file="./docker-install/.vagrant/machines/test1/virtualbox/private_key"
+
+
+[real-server]
+my_server
+
+#[raz1]
+#192.168.53.21 sible_user=vagrant ansible_private_key_file="./.vagrant/machines/raz1/virtualbox/private_key"

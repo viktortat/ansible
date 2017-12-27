@@ -1,0 +1,9 @@
+- hosts: all
+
+  tasks:
+
+    - name: Update apt-cache
+      apt: update_cache=yes
+
+    - name: start supervisor
+      command: /etc/init.d/supervisor start

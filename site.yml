@@ -1,0 +1,5 @@
+- hosts: all
+
+  roles:
+    - { role: python3 }
+    - { role: postgresql }

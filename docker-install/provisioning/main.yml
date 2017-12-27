@@ -1,0 +1,8 @@
+- hosts: all
+  become: yes
+  roles:
+    - { role: ansible-docker }
+
+  tasks:
+    - include: setup.yml
+    - include: docker.yml

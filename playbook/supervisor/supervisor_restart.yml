@@ -1,0 +1,6 @@
+- hosts: all
+
+  tasks:
+
+    - name: restart site in supervisor
+      supervisorctl: name={{ project_url }} state=restarted
